@@ -1,24 +1,28 @@
+@use "../../abstracts/functions";
+@use "../../abstracts/mixins";
+@use "../../abstracts/variables";
+
 .about-section {
   position: relative;
   background: url(/assets/img/main-bg.png) no-repeat center;
   background-size: cover;
   padding: 100px 0;
-  color: $primary-text-color;
+  color: variables.$primary-text-color;
   .about-left {
-    @include flexBox(column, null, null);
+    @include mixins.flexBox(column, null, null);
     align-items: flex-start;
     gap: 10px;
     h1 {
-      color: $primary-text-color;
+      color: variables.$primary-text-color;
       line-height: 68px;
       span {
-        color: $btn-hover-clr;
+        color: variables.$btn-hover-clr;
       }
     }
     p {
-      font-size: $font-size-lg;
+      font-size: variables.$font-size-lg;
       line-height: 40px;
-      font-weight: $font-weight-bold;
+      font-weight: variables.$font-weight-bold;
     }
   }
   .dot-container {
@@ -30,12 +34,12 @@
     height: 64px;
     padding: 8px;
     border-radius: 24px;
-    border: 4px solid $primary-text-color;
-    @include flexBox(null, null, center);
+    border: 4px solid variables.$primary-text-color;
+    @include mixins.flexBox(null, null, center);
     .dot {
       width: 10px;
       height: 10px;
-      background-color: $primary-text-color;
+      background-color: variables.$primary-text-color;
       border-radius: 50%;
       animation: moveUpDown 2s ease-in-out infinite;
       @keyframes moveUpDown {
@@ -53,7 +57,7 @@
   }
 }
 
-@include responsive("lg-devices") {
+@include mixins.responsive("lg-devices") {
   .about-section {
     .about-left {
       align-items: center;
@@ -61,20 +65,20 @@
     }
   }
 }
-@include responsive("sm-devices") {
+@include mixins.responsive("sm-devices") {
   .about-section {
     .about-left {
       h1 {
-        font-size: rem($font-size-lg);
+        font-size: functions.rem(variables.$font-size-lg);
         line-height: 32px;
       }
       p {
-        font-size: rem($font-size-sm);
+        font-size: functions.rem(variables.$font-size-sm);
       }
     }
   }
 }
-@include responsive("md-devices") {
+@include mixins.responsive("md-devices") {
   .about-section {
     .dot-container {
       bottom: 10%;

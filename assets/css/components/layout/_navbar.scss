@@ -1,59 +1,62 @@
+@use "../../abstracts/mixins";
+@use "../../abstracts/variables";
+
 .navbar-wrapper {
   position: fixed;
   top: 10px;
   left: 50%;
   z-index: 10;
-  background-color: $nav-bg-color;
-  box-shadow: $box-shadow;
-  color: $primary-text-color;
+  background-color: variables.$nav-bg-color;
+  box-shadow: variables.$box-shadow;
+  color: variables.$primary-text-color;
   width: 60%;
   transform: translateX(-50%);
   padding: 0 30px;
   border-radius: 25px;
-  box-shadow: $box-shadow;
-  @include flexBox(null, space-between, null);
+  box-shadow: variables.$box-shadow;
+  @include mixins.flexBox(null, space-between, null);
   .navbar-toggler:focus {
     box-shadow: none;
   }
   .navbar-toggle-burger {
-    color: $primary-text-color;
+    color: variables.$primary-text-color;
   }
   .navbar-ul {
     list-style: none;
-    @include flexBox(row, null, null);
+    @include mixins.flexBox(row, null, null);
     gap: 24px;
     .navbar-link {
-      color: $primary-text-color;
+      color: variables.$primary-text-color;
       text-decoration: none;
-      font-size: $font-size-sm;
+      font-size: variables.$font-size-sm;
       line-height: 27px;
       font-weight: 500;
-      @include buttonTransition;
+      @include mixins.buttonTransition;
       &:hover {
-        color: $btn-hover-clr;
-        text-decoration: underline $btn-hover-clr;
+        color: variables.$btn-hover-clr;
+        text-decoration: underline variables.$btn-hover-clr;
       }
     }
   }
 }
 
-@include responsive("lg-devices") {
+@include mixins.responsive("lg-devices") {
   .navbar-wrapper {
     .navbar-ul {
-      @include flexBox(column, null, center);
+      @include mixins.flexBox(column, null, center);
       padding: 10px 0 20px;
     }
   }
 }
-@include responsive("md-devices") {
+@include mixins.responsive("md-devices") {
   .navbar-wrapper {
     width: 100%;
     top: 0;
     border-radius: 0;
   }
 }
-@include responsive("sm-devices") {
+@include mixins.responsive("sm-devices") {
   .navbar-link {
-    font-size: $font-size-xs;
+    font-size: variables.$font-size-xs;
   }
 }

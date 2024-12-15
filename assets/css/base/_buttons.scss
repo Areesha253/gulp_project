@@ -1,22 +1,25 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .btn-standard {
   padding: 10px 40px;
   margin-top: 10px;
-  color: $primary-text-color;
-  background-color: $btn-color;
+  color: variables.$primary-text-color;
+  background-color: variables.$btn-color;
   font-weight: 700;
-  font-size: $font-size-base;
+  font-size: variables.$font-size-base;
   border-radius: 25px;
-  border: 2px solid $primary-text-color;
-  @include buttonTransition;
+  border: 2px solid variables.$primary-text-color;
+  @include mixins.buttonTransition;
   white-space: nowrap;
   &:hover {
-    background-color: $btn-hover-clr;
+    background-color: variables.$btn-hover-clr;
   }
 }
 
-  @include responsive('sm-devices') {
+  @include mixins.responsive('sm-devices') {
     .btn-standard{
       padding: 10px 30px;
-      font-size: $font-size-xs;
+      font-size: variables.$font-size-xs;
     }
   }

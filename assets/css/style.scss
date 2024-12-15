@@ -1,15 +1,15 @@
-@import "abstracts/variables";
-@import "abstracts/mixins";
-@import "abstracts/functions";
-@import "base/typography";
-@import "base/reset";
-@import "base/buttons";
-@import "components/layout/navbar";
-@import "components/layout/media-queries";
-@import "components/sections/about-section";
-@import "components/sections/work-section";
-@import "components/sections/my-expertise-section";
-@import "components/layout/footer";
+@use "abstracts/variables";
+@use "abstracts/mixins";
+@use "abstracts/functions";
+@use "base/typography";
+@use "base/reset";
+@use "base/buttons";
+@use "components/layout/navbar";
+@use "components/layout/media-queries";
+@use "components/sections/about-section";
+@use "components/sections/work-section";
+@use "components/sections/my-expertise-section";
+@use "components/layout/footer";
 
 // @use "abstracts/variables" as *;
 // @use "abstracts/mixins" as *;

@@ -1,25 +1,29 @@
+@use "../abstracts/functions";
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 @font-face {
   font-family: "Quicksand";
   src: url(/assets/fonts/Quicksand-Regular.ttf);
 }
 h1 {
-  font-size: rem($font-size-xl);
-  font-weight: $font-weight-bolder;
+  font-size: functions.rem(variables.$font-size-xl);
+  font-weight: variables.$font-weight-bolder;
 }
 h2 {
-  font-size: rem($font-size-lg);
-  font-weight: $font-weight-bolder;
+  font-size: functions.rem(variables.$font-size-lg);
+  font-weight: variables.$font-weight-bolder;
   line-height: 32px;
   margin-bottom: 20px;
 }
 h3 {
-  font-size: rem($font-size-md);
-  font-weight: $font-weight-regular;
+  font-size: functions.rem(variables.$font-size-md);
+  font-weight: variables.$font-weight-regular;
   line-height: 32px;
-  color: $secondary-text-color;
+  color: variables.$secondary-text-color;
 }
 p {
-  font-size: rem($font-size-base);
+  font-size: functions.rem(variables.$font-size-base);
 }
 .text-center {
   text-align: center;
@@ -31,13 +35,13 @@ p {
   text-align: left;
 }
 
-@include responsive("sm-devices") {
+@include mixins.responsive("sm-devices") {
   h2 {
-    font-size: rem(32);
+    font-size: functions.rem(32);
     // font-size: rem($font-size-lg);
     line-height: 45px;
   }
   h3 {
-    font-size: rem(16);
+    font-size: functions.rem(16);
   }
 }
