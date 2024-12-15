@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "Quicksand";
+  src: url(/assets/fonts/Quicksand-Regular.ttf);
+}
+h1 {
+  font-size: rem($font-size-xl);
+  font-weight: $font-weight-bolder;
+}
+h2 {
+  font-size: rem($font-size-lg);
+  font-weight: $font-weight-bolder;
+  line-height: 32px;
+  margin-bottom: 20px;
+}
+h3 {
+  font-size: rem($font-size-md);
+  font-weight: $font-weight-regular;
+  line-height: 32px;
+  color: $secondary-text-color;
+}
+p {
+  font-size: rem($font-size-base);
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+
+@include responsive("sm-devices") {
+  h2 {
+    font-size: rem(32);
+    // font-size: rem($font-size-lg);
+    line-height: 45px;
+  }
+  h3 {
+    font-size: rem(16);
+  }
+}

@@ -1,0 +1,42 @@
+.form-section {
+  padding: 40px 0;
+  background: $background-color;
+  color: $primary-text-color;
+  .form-wrapper {
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 8px;
+    box-shadow: $box-shadow;
+    .contact-form {
+      // @include flexDirection(column);
+      @include flexBox(column, null, null);
+      input,
+      select,
+      textarea {
+        appearance: none;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: $background-color;
+        color: $primary-text-color;
+        border: 1px solid $secondary-text-color;
+        border-radius: 15px;
+        font-size: $font-size-base;
+        &:focus {
+          border: 1px solid $btn-hover-clr;
+          outline: none;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+  img {
+    border-radius: 50%;
+  }
+}
+@include responsive('sm-devices') {
+  .form-section {
+    img {
+        display: none;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: "Quicksand";
+  overflow-x: hidden;
+  background-color: $body-bg-color;
+}
+ul,
+p {
+  margin-bottom: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}

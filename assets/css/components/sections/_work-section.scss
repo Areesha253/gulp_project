@@ -1,0 +1,42 @@
+.work-section {
+  color: $primary-text-color;
+  @extend .text-left;
+  padding: 40px 0;
+  p {
+    font-weight: $font-weight-regular;
+    line-height: 30px;
+    color: $secondary-text-color;
+  }
+  .project-showcase-card {
+    // @include flexDirection(column);
+    @include flexBox(column, null, null);
+    height: 100%;
+    gap: 10px;
+    border-radius: 10px;
+    padding: 20px;
+    color: $primary-text-color;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    background-color: $background-color;
+    .project-title {
+      font-size: $font-size-md;
+      font-weight: $font-weight-bold;
+      line-height: 36px;
+    }
+    .project-overview {
+      font-size: $font-size-xs;
+      font-weight: 400;
+      line-height: 21px;
+      color: $secondary-text-color;
+    }
+    img {
+      border-radius: 10px;
+    }
+  }
+}
+@include responsive("md-devices") {
+  .work-section {
+    p {
+      font-size: $font-size-xs;
+    }
+  }
+}

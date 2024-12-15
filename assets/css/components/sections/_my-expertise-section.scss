@@ -1,0 +1,34 @@
+.my-expertise-section {
+  padding: 40px 0;
+  @extend .text-center;
+  color: $primary-text-color;
+  .technology-tool {
+    width: 110px;
+    height: 104px;
+    padding: 20px 0;
+    border: 1px solid rgb(229, 231, 235);
+    @include flexBox(null, space-evenly, center);
+    border-radius: 50%;
+    background: $background-color;
+    @include buttonTransition;
+    &:hover {
+      transform: rotate(5deg);
+      cursor: pointer;
+    }
+  }
+  img {
+    width: 64px;
+  }
+}
+
+@include responsive("md-devices") {
+  .my-expertise-section {
+    .technology-tool {
+      width: 80px;
+      height: 80px;
+    }
+    img {
+      width: 54px;
+    }
+  }
+}

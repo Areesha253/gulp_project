@@ -1,0 +1,27 @@
+// Define the mixin for breakpoints
+@mixin responsive($device) {
+  @if $device == 'lg-devices' {
+    @media (max-width: 992px) { 
+      @content;
+    }
+  }
+  @else if $device == 'md-devices' {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  @else if $device == 'sm-devices' {
+    @media (max-width: 576px) {
+      @content;
+    }
+  }
+}
+@mixin buttonTransition{
+  transition: all 0.3s ease-in-out;
+}
+@mixin flexBox($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}

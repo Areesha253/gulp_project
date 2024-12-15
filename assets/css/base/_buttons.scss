@@ -1,0 +1,22 @@
+.btn-standard {
+  padding: 10px 40px;
+  margin-top: 10px;
+  color: $primary-text-color;
+  background-color: $btn-color;
+  font-weight: 700;
+  font-size: $font-size-base;
+  border-radius: 25px;
+  border: 2px solid $primary-text-color;
+  @include buttonTransition;
+  white-space: nowrap;
+  &:hover {
+    background-color: $btn-hover-clr;
+  }
+}
+
+  @include responsive('sm-devices') {
+    .btn-standard{
+      padding: 10px 30px;
+      font-size: $font-size-xs;
+    }
+  }
