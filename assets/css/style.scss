@@ -1,24 +1,10 @@
+@use "base/reset";
+
 @use "abstracts/variables";
 @use "abstracts/mixins";
 @use "abstracts/functions";
-@use "base/typography";
-@use "base/reset";
-@use "base/buttons";
-@use "components/layout/navbar";
-@use "components/layout/media-queries";
-@use "components/sections/about-section";
-@use "components/sections/work-section";
-@use "components/sections/my-expertise-section";
-@use "components/layout/footer";
 
-// @use "abstracts/variables" as *;
-// @use "abstracts/mixins" as *;
-// @use "base/typography" as *;
-// @use "base/reset" as *;
-// @use "base/buttons" as *;
-// @use "components/layout/navbar" as *;
-// @use "components/layout/media-queries" as *;
-// @use "components/sections/about-section" as *;
-// @use "components/sections/my-projects" as *;
-// @use "components/sections/expertise" as *;
-// @use "components/layout/footer" as *;
+@use "base/typography";
+@use "base/buttons";
+
+@use "components/index";
