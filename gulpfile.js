@@ -5,6 +5,8 @@ import cleanCSS from "gulp-clean-css";
 import uglify from "gulp-uglify";
 import concat from "gulp-concat";
 import autoprefixer from "gulp-autoprefixer";
+import imagemin from "gulp-imagemin";
+import imageminOptipng from "imagemin-optipng";
 
 const sassWithCompiler = gulpSass(sass);
 
@@ -39,24 +41,26 @@ const paths = {
       filename: "script.min.js",
     },
   },
+  img: {
+    src: "assets/img/**/*",
+    dest: "dist/img",
+  },
 };
 
 const sassTask = () => {
+  console.log("Starting Sass Task...");
   return gulp
     .src(paths.sass.src)
-    .pipe(
-      sassWithCompiler({
-        errLogToConsole: true,
-        outputStyle: "compressed",
-      })
-    )
-    .pipe(
-      autoprefixer({
-        cascade: false,
-      })
-    )
+    .pipe(sassWithCompiler({ outputStyle: "compressed" }))
+    .on("error", (err) => {
+      console.error("Sass Error:", err.message);
+    })
+    .pipe(autoprefixer({ cascade: false }))
     .pipe(cleanCSS({ compatibility: "ie8" }))
-    .pipe(gulp.dest(paths.sass.dest));
+    .pipe(gulp.dest(paths.sass.dest))
+    .on("end", () => {
+      console.log("Sass Task Completed.");
+    });
 };
 
 const cssVendorTask = () => {
@@ -82,38 +86,26 @@ const mainScriptTask = () => {
     .pipe(uglify())
     .pipe(gulp.dest(paths.js.main.dest));
 };
+
+const imageOptimization = () => {
+  return gulp
+    .src(paths.img.src)
+    .pipe(imagemin([imageminOptipng({ optimizationLevel: 3 })]))
+    .pipe(gulp.dest(paths.img.dest));
+};
+
 const watchStyles = () => {
-  gulp.watch("assets/css/**/*.scss", gulp.series(sassTask));
+  gulp.watch("assets/css/**/*.scss", sassTask);
 };
+
 const watchScripts = () => {
-  gulp.watch(
-    "assets/js/**/*.js",
-    gulp.series(cssVendorTask, vendorScriptsTask, mainScriptTask)
-  );
+  gulp.watch("assets/js/**/*.js", gulp.series(cssVendorTask, vendorScriptsTask, mainScriptTask));
 };
 
-const watch = gulp.parallel(watchStyles, watchScripts);
+const watchImages = () => {
+  gulp.watch(paths.img.src, imageOptimization);
+};
 
-export default gulp.series(
-  sassTask,
-  cssVendorTask,
-  vendorScriptsTask,
-  mainScriptTask,
-  watch
-);
+const watchTasks = gulp.parallel(watchStyles, watchScripts, watchImages);
 
-// import imagemin from "gulp-imagemin";
-// img: {
-//   src: "assets/img/**/*",
-//   dest: "dist/img",
-// },
-// const watchImages = () => {
-//   gulp.watch("assets/img/**/*/", imageOptimization);
-// };
-// const imageOptimization = () => {
-//   return gulp
-//     .src(paths.img.src)
-//     .pipe(imagemin())
-//     .pipe(gulp.dest(paths.img.dest));
-// };
-// watchImages,
+export default gulp.series(sassTask, cssVendorTask, vendorScriptsTask, mainScriptTask, imageOptimization, watchTasks);
