@@ -47,9 +47,8 @@ const paths = {
   },
 };
 
-const sassTask = () => {
-  console.log("Starting Sass Task...");
-  return gulp
+const sassTask = () =>
+  gulp
     .src(paths.sass.src)
     .pipe(sassWithCompiler({ outputStyle: "compressed" }))
     .on("error", (err) => {
@@ -57,54 +56,41 @@ const sassTask = () => {
     })
     .pipe(autoprefixer({ cascade: false }))
     .pipe(cleanCSS({ compatibility: "ie8" }))
-    .pipe(gulp.dest(paths.sass.dest))
-    .on("end", () => {
-      console.log("Sass Task Completed.");
-    });
-};
+    .pipe(gulp.dest(paths.sass.dest));
 
-const cssVendorTask = () => {
-  return gulp
+const cssVendorTask = () =>
+  gulp
     .src(paths.css.vendors.list)
     .pipe(concat(paths.css.vendors.filename))
     .pipe(cleanCSS())
     .pipe(gulp.dest(paths.css.vendors.dest));
-};
 
-const vendorScriptsTask = () => {
-  return gulp
+const vendorScriptsTask = () =>
+  gulp
     .src(paths.js.vendors.list)
     .pipe(concat(paths.js.vendors.filename))
     .pipe(uglify())
     .pipe(gulp.dest(paths.js.vendors.dest));
-};
 
-const mainScriptTask = () => {
-  return gulp
-    .src(paths.js.main.src)
-    .pipe(concat(paths.js.main.filename))
-    .pipe(uglify())
-    .pipe(gulp.dest(paths.js.main.dest));
-};
+const mainScriptTask = () =>
+  gulp.src(paths.js.main.src).pipe(concat(paths.js.main.filename)).pipe(uglify()).pipe(gulp.dest(paths.js.main.dest));
 
-const imageOptimization = () => {
-  return gulp
-    .src(paths.img.src)
-    .pipe(imagemin([imageminOptipng({ optimizationLevel: 3 })]))
+const imageOptimization = () =>
+  gulp
+    .src(paths.img.src, { encoding: false })
+    .pipe(
+      imagemin([imageminOptipng({ optimizationLevel: 7 })], {
+        verbose: true,
+      })
+    )
     .pipe(gulp.dest(paths.img.dest));
-};
 
-const watchStyles = () => {
-  gulp.watch("assets/css/**/*.scss", sassTask);
-};
+const watchStyles = () => gulp.watch("assets/css/**/*.scss", sassTask);
 
-const watchScripts = () => {
+const watchScripts = () =>
   gulp.watch("assets/js/**/*.js", gulp.series(cssVendorTask, vendorScriptsTask, mainScriptTask));
-};
 
-const watchImages = () => {
-  gulp.watch(paths.img.src, imageOptimization);
-};
+const watchImages = () => gulp.watch(paths.img.src, imageOptimization);
 
 const watchTasks = gulp.parallel(watchStyles, watchScripts, watchImages);
 
