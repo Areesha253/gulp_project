@@ -6,42 +6,52 @@
   font-family: "Quicksand";
   src: url(/assets/fonts/Quicksand-Regular.ttf);
 }
-h1 {
-  font-size: functions.rem(variables.$font-size-xl);
-  font-weight: variables.$font-weight-bolder;
-}
-h2 {
-  font-size: functions.rem(variables.$font-size-lg);
-  font-weight: variables.$font-weight-bolder;
-  line-height: 32px;
-  margin-bottom: 20px;
-}
-h3 {
-  font-size: functions.rem(variables.$font-size-md);
-  font-weight: variables.$font-weight-regular;
-  line-height: 32px;
-  color: variables.$secondary-text-color;
-}
-p {
+html {
   font-size: functions.rem(variables.$font-size-base);
+  h1 {
+    font-size: functions.rem(variables.$font-size-xl);
+    font-weight: variables.$font-weight-bolder;
+  }
+  h2 {
+    font-size: functions.rem(variables.$font-size-lg);
+    font-weight: variables.$font-weight-bolder;
+    line-height: 32px;
+    margin-bottom: 20px;
+  }
+  h3 {
+    font-size: functions.rem(variables.$font-size-md);
+    font-weight: variables.$font-weight-regular;
+    line-height: 32px;
+    color: variables.$secondary-text-color;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: functions.rem(variables.$font-size-base);
+  }
 }
-.text-center {
-  text-align: center;
+@include mixins.responsive("lg-devices") {
+  html {
+    font-size: functions.rem(18);
+  }
 }
-.text-right {
-  text-align: right;
-}
-.text-left {
-  text-align: left;
+
+@include mixins.responsive("md-devices") {
+  html {
+    font-size: functions.rem(16);
+    h1 {
+      font-size: functions.rem(32);
+    }
+    h2 {
+      font-size: functions.rem(24);
+    }
+    h3 {
+      font-size: functions.rem(20);
+    }
+  }
 }
 
 @include mixins.responsive("sm-devices") {
-  h2 {
-    font-size: functions.rem(32);
-    // font-size: rem($font-size-lg);
-    line-height: 45px;
-  }
-  h3 {
-    font-size: functions.rem(16);
+  html {
+    font-size: functions.rem(14);
   }
 }

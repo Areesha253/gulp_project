@@ -1,6 +1,6 @@
+@use "../abstracts/variables";
 @use "sass:math";
 
-$browser-context: 16;
-@function rem($pixels, $context: $browser-context) {
+@function rem($pixels, $context: variables.$font-size-base) {
   @return #{math.div($pixels, $context)}rem;
 }
