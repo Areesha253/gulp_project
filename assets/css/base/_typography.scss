@@ -11,19 +11,26 @@ html {
   h1 {
     font-size: functions.rem(variables.$font-size-xl);
     font-weight: variables.$font-weight-bolder;
+    line-height: 68px;
   }
   h2 {
     font-size: functions.rem(variables.$font-size-lg);
     font-weight: variables.$font-weight-bolder;
     line-height: 32px;
-    margin-bottom: 20px;
+    margin-bottom: functions.rem(15);
   }
   h3 {
     font-size: functions.rem(variables.$font-size-md);
     font-weight: variables.$font-weight-regular;
     line-height: 32px;
     color: variables.$secondary-text-color;
-    margin-bottom: 20px;
+    margin-bottom: functions.rem(18);
+  }
+  h4 {
+    font-size: functions.rem(variables.$font-size-md);
+    font-weight: variables.$font-weight-regular;
+    line-height: 32px;
+    color: variables.$primary-text-color;
   }
   p {
     font-size: functions.rem(variables.$font-size-base);
@@ -40,12 +47,16 @@ html {
     font-size: functions.rem(16);
     h1 {
       font-size: functions.rem(32);
+      line-height: 28px;
     }
     h2 {
       font-size: functions.rem(24);
+      line-height: 24px;
     }
-    h3 {
+    h3,
+    h4 {
       font-size: functions.rem(20);
+      line-height: 24px;
     }
   }
 }

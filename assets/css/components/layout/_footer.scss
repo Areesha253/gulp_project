@@ -1,29 +1,29 @@
 @use "../../abstracts/mixins";
 @use "../../abstracts/variables";
+@use "../../abstracts/functions";
 
 .form-section {
-  padding: 40px 0;
+  padding: functions.rem(40) 0;
   background: variables.$background-color;
   color: variables.$primary-text-color;
   .form-wrapper {
-    padding: 20px;
+    padding: functions.rem(20);
     background-color: transparent;
     border-radius: 8px;
     box-shadow: variables.$box-shadow;
     .contact-form {
-      // @include flexDirection(column);
       @include mixins.flexBox(column, null, null);
       input,
       select,
       textarea {
         appearance: none;
-        padding: 10px;
-        margin: 10px 0;
+        padding: functions.rem(10);
+        margin: functions.rem(10) 0;
         background-color: variables.$background-color;
         color: variables.$primary-text-color;
         border: 1px solid variables.$secondary-text-color;
         border-radius: 15px;
-        font-size: variables.$font-size-base;
+        font-size: functions.rem(variables.$font-size-base);
         &:focus {
           border: 1px solid variables.$btn-hover-clr;
           outline: none;
@@ -36,10 +36,10 @@
     border-radius: 50%;
   }
 }
-@include mixins.responsive('sm-devices') {
+@include mixins.responsive("sm-devices") {
   .form-section {
     img {
-        display: none;
+      display: none;
     }
   }
 }

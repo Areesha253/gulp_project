@@ -1,13 +1,14 @@
 @use "../abstracts/mixins";
 @use "../abstracts/variables";
+@use "../abstracts/functions";
 
 .btn-standard {
-  padding: 10px 40px;
-  margin-top: 10px;
+  padding: functions.rem(10) functions.rem(40);
+  margin-top: functions.rem(10);
   color: variables.$primary-text-color;
   background-color: variables.$btn-color;
   font-weight: 700;
-  font-size: variables.$font-size-base;
+  font-size: functions.rem(variables.$font-size-xs);
   border-radius: 25px;
   border: 2px solid variables.$primary-text-color;
   @include mixins.buttonTransition;
@@ -16,10 +17,3 @@
     background-color: variables.$btn-hover-clr;
   }
 }
-
-  @include mixins.responsive('sm-devices') {
-    .btn-standard{
-      padding: 10px 30px;
-      font-size: variables.$font-size-xs;
-    }
-  }

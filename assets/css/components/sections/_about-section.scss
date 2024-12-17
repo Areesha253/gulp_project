@@ -6,7 +6,7 @@
   position: relative;
   background: url(/assets/img/main-bg.png) no-repeat center;
   background-size: cover;
-  padding: 100px 0;
+  padding-top: functions.rem(100);
   color: variables.$primary-text-color;
   .about-left {
     @include mixins.flexBox(column, null, null);
@@ -14,13 +14,11 @@
     gap: 10px;
     h1 {
       color: variables.$primary-text-color;
-      line-height: 68px;
       span {
         color: variables.$btn-hover-clr;
       }
     }
     p {
-      font-size: variables.$font-size-lg;
       line-height: 40px;
       font-weight: variables.$font-weight-bold;
     }
@@ -32,7 +30,7 @@
     transform: translate(-50%, -50%);
     width: 35px;
     height: 64px;
-    padding: 8px;
+    padding: functions.rem(8);
     border-radius: 24px;
     border: 4px solid variables.$primary-text-color;
     @include mixins.flexBox(null, null, center);
@@ -62,19 +60,6 @@
     .about-left {
       align-items: center;
       text-align: center;
-    }
-  }
-}
-@include mixins.responsive("sm-devices") {
-  .about-section {
-    .about-left {
-      h1 {
-        font-size: functions.rem(variables.$font-size-lg);
-        line-height: 32px;
-      }
-      p {
-        font-size: functions.rem(variables.$font-size-sm);
-      }
     }
   }
 }

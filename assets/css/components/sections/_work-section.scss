@@ -1,32 +1,32 @@
 @use "../../abstracts/mixins";
 @use "../../abstracts/variables";
+@use "../../abstracts/functions";
 
 .work-section {
   color: variables.$primary-text-color;
-  @extend .text-left;
-  padding: 40px 0;
+  text-align: left;
+  padding: functions.rem(40) 0;
   p {
     font-weight: variables.$font-weight-regular;
     line-height: 30px;
     color: variables.$secondary-text-color;
   }
   .project-showcase-card {
-    // @include flexDirection(column);
     @include mixins.flexBox(column, null, null);
     height: 100%;
     gap: 10px;
     border-radius: 10px;
-    padding: 20px;
+    padding: functions.rem(20);
     color: variables.$primary-text-color;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     background-color: variables.$background-color;
     .project-title {
-      font-size: variables.$font-size-md;
+      font-size: functions.rem(variables.$font-size-md);
       font-weight: variables.$font-weight-bold;
       line-height: 36px;
     }
     .project-overview {
-      font-size: variables.$font-size-xs;
+      font-size: functions.rem(variables.$font-size-xs);
       font-weight: 400;
       line-height: 21px;
       color: variables.$secondary-text-color;
@@ -36,10 +36,12 @@
     }
   }
 }
-@include mixins.responsive("md-devices") {
+@include mixins.responsive("sm-devices") {
   .work-section {
-    p {
-      font-size: variables.$font-size-xs;
+    .project-showcase-card {
+      .project-title {
+        font-size: functions.rem(variables.$font-size-sm);
+      }
     }
   }
 }

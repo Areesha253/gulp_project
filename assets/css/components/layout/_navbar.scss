@@ -1,5 +1,6 @@
 @use "../../abstracts/mixins";
 @use "../../abstracts/variables";
+@use "../../abstracts/functions";
 
 .navbar-wrapper {
   position: fixed;
@@ -11,7 +12,7 @@
   color: variables.$primary-text-color;
   width: 60%;
   transform: translateX(-50%);
-  padding: 0 30px;
+  padding: 0 functions.rem(30);
   border-radius: 25px;
   box-shadow: variables.$box-shadow;
   @include mixins.flexBox(null, space-between, null);
@@ -28,7 +29,7 @@
     .navbar-link {
       color: variables.$primary-text-color;
       text-decoration: none;
-      font-size: variables.$font-size-sm;
+      font-size: functions.rem(variables.$font-size-sm);
       line-height: 27px;
       font-weight: 500;
       @include mixins.buttonTransition;
@@ -44,7 +45,7 @@
   .navbar-wrapper {
     .navbar-ul {
       @include mixins.flexBox(column, null, center);
-      padding: 10px 0 20px;
+      padding: functions.rem(10) 0 functions.rem(20);
     }
   }
 }
@@ -53,10 +54,5 @@
     width: 100%;
     top: 0;
     border-radius: 0;
-  }
-}
-@include mixins.responsive("sm-devices") {
-  .navbar-link {
-    font-size: variables.$font-size-xs;
   }
 }
